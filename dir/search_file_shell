@@ -1,0 +1,6 @@
+grid	*.o
+dim	*
+catas	[a-z][a-z]*
+c23	[0-9][0-9]*
+kern	[a-z][a-z]*[0-9]
+
