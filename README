@@ -1,0 +1,39 @@
+Author - Ayush Mittal
+----------------- "search.py" is a python script to search filenames in a directory hierarchy.
+
+The searching mechanism is bound by following rules:
+ 
+The result matched has at most 1 substitution or 1 addition or 1 deletion of character from the original pattern to be matched. Of course, it can match exactly.
+For example, if filename to be searched is 'host' then it can match files such as 'ost.c', 'hosts.c', 'hst', 'most'.
+Note that the file extension is ignored. It is assumed that the file extension starts with the first "dot".
+ 
+The python script takes two inputs from command line:
+	(1) a top-level directory in which files will be searched recursively, and (2) a "querystrings" file.
+
+The "querystrings" file will contain a different query on each line.
+
+The query has two parts separated by a tab: (i) a name string, and (ii) a regular expression for matching filenames.
+
+The regular expression is a shell-like expansion list, e.g., *.c, *t.*, a?.*, etc. The filename from the top-level directory should conform to the regular expression. * matches everything. For the above example, if the regular expression is *.c, then only 'hosts.c' should be returned.
+So, let us say your script is 'searcher.py'. Then you have to run it on terminal as follows:
+$ python searcher.py topdirectory querystrings
+ 
+Now after searching, script prints two lists:
+List 1
+-------
+It contains 4 columns:
+query_string  regular expression  subdirectoryname  matchedfilename
+----------------------------------------------------------------------------------------
+ 
+List 2
+-------
+It contains 2 columns and the results are calculated from the first list:
+subdirectoryname  countofmatchedfiles
+--------------------------------------------------
+
+List 2 is Printed only if count is non-zero.
+
+subdirectory /d/a/b/ is different from /d/a/, and a match in /d/a/b/ does not count for /d/b/
+
+
+An example querystrings file : "search_query_shell" is present in dir/ for dir/
